@@ -7,6 +7,9 @@ const featureWidgets = [];
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach(heading => {
   if (heading.textContent.trim() === 'feature-widget') {
+    // Hide the h2 element
+    heading.style.display = 'none';
+    
     // Store the parent element of the matched h2
     featureWidgets.push(heading.parentNode);
   }

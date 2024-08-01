@@ -49,6 +49,4 @@ featureWidgets.forEach(featureWidget => {
     }
   });
 
-  // Set the color of the feature widget to red
-  featureWidget.style.color = 'red';
 });

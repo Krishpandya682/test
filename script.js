@@ -6,7 +6,9 @@ const featureWidgets = [];
 
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach(heading => {
-  tokens = headings.textContent.split(' ')
+  var tokens = headings.textContent.split(' ')
+  console.log("text : ", headings.textContent);
+  console.log("Tokens : ", tokens);
   if (tokens[0].trim() === 'feature-widget') {
     // Hide the h2 element
     heading.style.display = 'none';

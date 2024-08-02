@@ -33,37 +33,21 @@ function stripPrefix(className) {
   return className.split("-")[1];
 }
 
-// Function to validate the heading format
-function validateHeadingFormat(tokens) {
-  return (
-    tokens.length >= 6 &&
-    tokens[0] === "feature-widget" &&
-    tokens[1].startsWith("image-") &&
-    tokens[2].startsWith("bg-") &&
-    tokens[3].startsWith("heading-") &&
-    tokens[4].startsWith("text-") &&
-    tokens[5].startsWith("link-")
-  );
-}
-
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach((heading) => {
   const tokens = heading.textContent.trim().split(" ");
-
-  // Check if the heading starts with "feature-widget"
   if (tokens[0] === "feature-widget") {
-
     // Hide the h2 element
     hideElement(heading);
 
     // Store the parent element and parsed properties
     const properties = {
       parent: heading.parentNode,
-      imageLeft: tokens[1] === "image-left",
-      bgColor: stripPrefix(tokens[2]), // Strip prefix from bgColor
-      headingColor: stripPrefix(tokens[3]), // Strip prefix from headingColor
-      textColor: stripPrefix(tokens[4]), // Strip prefix from textColor
-      linkColor: stripPrefix(tokens[5]), // Strip prefix from linkColor
+      imageLeft: tokens.includes("image-left"),
+      bgColor: stripPrefix(tokens[1]), // Strip prefix from bgColor
+      headingColor: stripPrefix(tokens[2]), // Strip prefix from headingColor
+      textColor: stripPrefix(tokens[3]), // Strip prefix from textColor
+      linkColor: stripPrefix(tokens[4]), // Strip prefix from linkColor
     };
 
     featureWidgets.push(properties);

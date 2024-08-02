@@ -1,27 +1,17 @@
 // Select all h2 elements
-const headings = document.querySelectorAll('h2');
+const headings = document.querySelectorAll("h2");
 
-// Initialize an array to store the parent elements (feature widgets)
+// Initialize an array to store the feature widgets and their properties
 const featureWidgets = [];
 
-// Iterate through the headings to find those with the text "feature-widget"
-headings.forEach(heading => {
-  var tokens = heading.textContent.split(' ')
-  console.log("text : ", heading.textContent);
-  console.log("Tokens : ", tokens);
-  if (tokens[0].trim() === 'feature-widget') {
-    // Hide the h2 element
-    heading.style.display = 'none';
-    
-    // Store the parent element of the matched h2
-    featureWidgets.push(heading.parentNode);
-  }
-});
+// Function to hide an element
+function hideElement(element) {
+  element.style.display = "none";
+}
 
 // Function to wrap content inside a new div with the specified class name
 function wrapContentInDiv(parent, className) {
-  // Create the new div
-  const wrapperDiv = document.createElement('div');
+  const wrapperDiv = document.createElement("div");
   wrapperDiv.className = className;
 
   // Move all child elements of the parent into the new div
@@ -33,23 +23,58 @@ function wrapContentInDiv(parent, className) {
   parent.appendChild(wrapperDiv);
 }
 
+// Function to assign the 'feature-widget-text' class to the appropriate div
+function assignFeatureWidgetTextClass(div, properties) {
+  div.classList.add("feature-widget-text");
+  
+}
+
+// Function to strip prefix from a class name
+function stripPrefix(className) {
+  return className.split("-")[1];
+}
+
+// Iterate through the headings to find those with the text "feature-widget"
+headings.forEach((heading) => {
+  const tokens = heading.textContent.trim().split(" ");
+  if (tokens[0] === "feature-widget") {
+    // Hide the h2 element
+    hideElement(heading);
+
+    // Store the parent element and parsed properties
+    const properties = {
+      parent: heading.parentNode,
+      imageLeft: tokens.includes("image-left"),
+      bgColor: stripPrefix(tokens[1]), // Strip prefix from bgColor
+      headingColor: stripPrefix(tokens[2]), // Strip prefix from headingColor
+      textColor: stripPrefix(tokens[3]), // Strip prefix from textColor
+      linkColor: stripPrefix(tokens[4]), // Strip prefix from linkColor
+    };
+
+    featureWidgets.push(properties);
+  }
+});
+
 // Iterate over each feature widget to add classes and wrap content
-featureWidgets.forEach(featureWidget => {
-  // Find all .row elements within the feature widget
-  const rowElements = featureWidget.querySelectorAll('.row');
+featureWidgets.forEach((featureWidget) => {
+  const rowElements = featureWidget.parent.querySelectorAll(".row");
+  const imageLeft = featureWidget.imageLeft;
 
-  rowElements.forEach(row => {
-    // Get all .col-800 elements within the current row
-    const colElements = row.querySelectorAll('.col-800');
+  rowElements.forEach((row) => {
+    const colElements = row.querySelectorAll(".col-800");
 
-    // Check if there are at least two .col-800 elements
     if (colElements.length >= 2) {
-      // Wrap the first .col-800 in a div with the class 'feature-widget-item-left'
-      wrapContentInDiv(colElements[0], 'feature-widget-item-left');
+      wrapContentInDiv(colElements[0], "feature-widget-item-left");
+      wrapContentInDiv(colElements[1], "feature-widget-item-right");
 
-      // Wrap the second .col-800 in a div with the class 'feature-widget-item-right'
-      wrapContentInDiv(colElements[1], 'feature-widget-item-right');
+      if (imageLeft) {
+        assignFeatureWidgetTextClass(colElements[1], featureWidget);
+      } else {
+        assignFeatureWidgetTextClass(colElements[0], featureWidget);
+      }
     }
   });
-
 });
+
+// Log the featureWidgets array to see the parsed results
+console.log(featureWidgets);

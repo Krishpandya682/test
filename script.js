@@ -27,6 +27,7 @@ function wrapContentInDiv(parent, className) {
 // Function to assign the 'feature-widget-text' class to the appropriate div
 function assignFeatureWidgetTextClass(div, properties) {
   div.classList.add("feature-widget-text");
+  div.classList.add("feature-widget-bg-"+properties.bgColor);
 }
 
 // Function to strip prefix from a class name

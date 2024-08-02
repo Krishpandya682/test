@@ -49,6 +49,8 @@ const featureWidgets = [];
 
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach((heading) => {
+  console.log(heading.textContent);
+  console.log(heading.textContent.split(":")[1].trim());
   
   if (heading.textContent.includes("feature-widget")) {
     const content = heading.textContent.split(":")[1].trim();

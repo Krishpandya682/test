@@ -95,5 +95,37 @@ featureWidgets.forEach((featureWidget) => {
   });
 });
 
-// Log the featureWidgets array to see the parsed results
-console.log(featureWidgets);
+// Get all the feature widget items
+let featureWidgetItems = document.getElementsByClassName("feature-widget-item-left");
+let featureWidgetsArray = [];
+
+// Iterate over each feature widget item
+Array.from(featureWidgetItems).forEach((widgetItem) => {
+  let featureWidget = widgetItem.parentNode.parentNode.parentNode.parentNode.parentNode;
+  featureWidget.classList.add("feature-widget");
+  featureWidgetsArray.push(featureWidget);
+});
+
+// Check each feature widget if its left item has an image
+featureWidgetsArray.forEach((featureWidget) => {
+  // Get the left column
+  let leftCol = featureWidget.getElementsByClassName("feature-widget-item-left")[0].parentNode;
+
+  // Check if left item has an image
+  let imageTags = leftCol.getElementsByTagName("img");
+  if (imageTags.length > 0) {
+    let mobileCol = leftCol.cloneNode(true);
+    mobileCol.classList.add("feature-widget-image-col-mobile");
+
+    leftCol.classList.add("feature-widget-image-col-desktop");
+
+    leftCol.parentNode.appendChild(mobileCol);
+  }
+});
+
+// Move the feature-widgets to the main content
+let mainContent = document.getElementById("main-content");
+featureWidgetsArray.forEach((featureWidget) => {
+  featureWidget.parentNode.removeChild(featureWidget);
+  mainContent.appendChild(featureWidget);
+});

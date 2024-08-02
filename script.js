@@ -54,7 +54,7 @@ headings.forEach((heading) => {
   if (tokens[0] === "feature-widget") {
     // Validate the heading format
     if (!validateHeadingFormat(tokens)) {
-     // alert("The feature widget properties are not correctly defined.");
+    
       return; // Continue with the next heading
     }
 

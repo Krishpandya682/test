@@ -21,6 +21,7 @@ function wrapContentInDiv(parent, className) {
 
   // Append the new div back to the parent
   parent.appendChild(wrapperDiv);
+  return wrapperDiv;
 }
 
 // Function to assign the 'feature-widget-text' class to the appropriate div
@@ -63,13 +64,13 @@ featureWidgets.forEach((featureWidget) => {
     const colElements = row.querySelectorAll(".col-800");
 
     if (colElements.length >= 2) {
-      wrapContentInDiv(colElements[0], "feature-widget-item-left");
-      wrapContentInDiv(colElements[1], "feature-widget-item-right");
+      const leftDiv = wrapContentInDiv(colElements[0], "feature-widget-item-left");
+      const rightDiv = wrapContentInDiv(colElements[1], "feature-widget-item-right");
 
       if (imageLeft) {
-        assignFeatureWidgetTextClass(colElements[1], featureWidget);
+        assignFeatureWidgetTextClass(rightDiv, featureWidget);
       } else {
-        assignFeatureWidgetTextClass(colElements[0], featureWidget);
+        assignFeatureWidgetTextClass(leftDiv, featureWidget);
       }
     }
   });

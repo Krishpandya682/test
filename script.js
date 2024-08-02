@@ -52,11 +52,6 @@ headings.forEach((heading) => {
 
   // Check if the heading starts with "feature-widget"
   if (tokens[0] === "feature-widget") {
-    // Validate the heading format
-    if (!validateHeadingFormat(tokens)) {
-    
-      return; // Continue with the next heading
-    }
 
     // Hide the h2 element
     hideElement(heading);

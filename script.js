@@ -32,7 +32,7 @@ function assignFeatureWidgetTextClass(div, properties) {
   // Add class to a tags
   const aTags = div.querySelectorAll("a");
   aTags.forEach((a) => {
-    a.classList.add("feature-widget-link-" + properties.linkColor);
+    a.classList.add("feature-widget-text-" + properties.linkColor);
   });
 }
 

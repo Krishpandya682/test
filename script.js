@@ -23,11 +23,28 @@ function wrapContentInDiv(parent, className) {
   parent.appendChild(wrapperDiv);
   return wrapperDiv;
 }
-
-// Function to assign the 'feature-widget-text' class to the appropriate div
+// Function to assign the 'feature-widget-item-text' class and other classes based on properties
 function assignFeatureWidgetTextClass(div, properties) {
-  div.classList.add("feature-widget-text");
-  div.classList.add("feature-widget-bg-"+properties.bgColor);
+  div.classList.add("feature-widget-item-text");
+  div.classList.add("feature-widget-bg-" + properties.bgColor);
+
+  // Add class to h2 tags
+  const h2Tags = div.querySelectorAll("h2");
+  h2Tags.forEach((h2) => {
+    h2.classList.add("feature-widget-text-" + properties.headingColor);
+  });
+
+  // Add class to p tags
+  const pTags = div.querySelectorAll("p");
+  pTags.forEach((p) => {
+    p.classList.add("feature-widget-text-" + properties.textColor);
+  });
+
+  // Add class to a tags
+  const aTags = div.querySelectorAll("a");
+  aTags.forEach((a) => {
+    a.classList.add("feature-widget-link-" + properties.linkColor);
+  });
 }
 
 // Function to strip prefix from a class name
@@ -65,8 +82,14 @@ featureWidgets.forEach((featureWidget) => {
     const colElements = row.querySelectorAll(".col-800");
 
     if (colElements.length >= 2) {
-      const leftDiv = wrapContentInDiv(colElements[0], "feature-widget-item-left");
-      const rightDiv = wrapContentInDiv(colElements[1], "feature-widget-item-right");
+      const leftDiv = wrapContentInDiv(
+        colElements[0],
+        "feature-widget-item-left"
+      );
+      const rightDiv = wrapContentInDiv(
+        colElements[1],
+        "feature-widget-item-right"
+      );
 
       if (imageLeft) {
         assignFeatureWidgetTextClass(rightDiv, featureWidget);

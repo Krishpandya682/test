@@ -26,7 +26,6 @@ function wrapContentInDiv(parent, className) {
 // Function to assign the 'feature-widget-text' class to the appropriate div
 function assignFeatureWidgetTextClass(div, properties) {
   div.classList.add("feature-widget-text");
-  
 }
 
 // Function to strip prefix from a class name
@@ -34,25 +33,38 @@ function stripPrefix(className) {
   return className.split("-")[1];
 }
 
+// Function to validate the heading format
+function validateHeadingFormat(tokens) {
+  if (tokens.length < 6 || tokens[0] !== "feature-widget" || !tokens[1].startsWith("image-") || !tokens[2].startsWith("bg-") || !tokens[3].startsWith("heading-") || !tokens[4].startsWith("text-") || !tokens[5].startsWith("link-")) {
+    return false;
+  }
+  return true;
+}
+
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach((heading) => {
   const tokens = heading.textContent.trim().split(" ");
-  if (tokens[0] === "feature-widget") {
-    // Hide the h2 element
-    hideElement(heading);
 
-    // Store the parent element and parsed properties
-    const properties = {
-      parent: heading.parentNode,
-      imageLeft: tokens.includes("image-left"),
-      bgColor: stripPrefix(tokens[1]), // Strip prefix from bgColor
-      headingColor: stripPrefix(tokens[2]), // Strip prefix from headingColor
-      textColor: stripPrefix(tokens[3]), // Strip prefix from textColor
-      linkColor: stripPrefix(tokens[4]), // Strip prefix from linkColor
-    };
-
-    featureWidgets.push(properties);
+  // Validate the heading format
+  if (!validateHeadingFormat(tokens)) {
+    alert("The feature widget properties are not correctly defined.");
+    return;
   }
+
+  // Hide the h2 element
+  hideElement(heading);
+
+  // Store the parent element and parsed properties
+  const properties = {
+    parent: heading.parentNode,
+    imageLeft: tokens[1] === "image-left",
+    bgColor: stripPrefix(tokens[2]), // Strip prefix from bgColor
+    headingColor: stripPrefix(tokens[3]), // Strip prefix from headingColor
+    textColor: stripPrefix(tokens[4]), // Strip prefix from textColor
+    linkColor: stripPrefix(tokens[5]), // Strip prefix from linkColor
+  };
+
+  featureWidgets.push(properties);
 });
 
 // Iterate over each feature widget to add classes and wrap content

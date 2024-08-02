@@ -46,10 +46,10 @@ headings.forEach((heading) => {
     const properties = {
       parent: heading.parentNode,
       imageLeft: tokens.includes("image-left"),
-      bgColor: stripPrefix(tokens[1]), // Strip prefix from bgColor
-      headingColor: stripPrefix(tokens[2]), // Strip prefix from headingColor
-      textColor: stripPrefix(tokens[3]), // Strip prefix from textColor
-      linkColor: stripPrefix(tokens[4]), // Strip prefix from linkColor
+      bgColor: stripPrefix(tokens[2]), // Strip prefix from bgColor
+      headingColor: stripPrefix(tokens[3]), // Strip prefix from headingColor
+      textColor: stripPrefix(tokens[4]), // Strip prefix from textColor
+      linkColor: stripPrefix(tokens[5]), // Strip prefix from linkColor
     };
 
     featureWidgets.push(properties);

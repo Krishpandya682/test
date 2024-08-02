@@ -49,8 +49,11 @@ const featureWidgets = [];
 
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach((heading) => {
-  const tokens = heading.textContent.trim().split(" ");
-  if (tokens[0] === "feature-widget") {
+  
+  if (heading.textContent.includes("feature-widget")) {
+    const content = heading.textContent.split(":")[1].trim();
+    const tokens = content.split(" ");
+
     // Hide the h2 element
     heading.style.display = "none";
 
@@ -96,12 +99,15 @@ featureWidgets.forEach((featureWidget) => {
 });
 
 // Get all the feature widget items
-let featureWidgetItems = document.getElementsByClassName("feature-widget-item-left");
+let featureWidgetItems = document.getElementsByClassName(
+  "feature-widget-item-left"
+);
 let featureWidgetsArray = [];
 
 // Iterate over each feature widget item
 Array.from(featureWidgetItems).forEach((widgetItem) => {
-  let featureWidget = widgetItem.parentNode.parentNode.parentNode.parentNode.parentNode;
+  let featureWidget =
+    widgetItem.parentNode.parentNode.parentNode.parentNode.parentNode;
   featureWidget.classList.add("feature-widget");
   featureWidgetsArray.push(featureWidget);
 });
@@ -109,7 +115,9 @@ Array.from(featureWidgetItems).forEach((widgetItem) => {
 // Check each feature widget if its left item has an image
 featureWidgetsArray.forEach((featureWidget) => {
   // Get the left column
-  let leftCol = featureWidget.getElementsByClassName("feature-widget-item-left")[0].parentNode;
+  let leftCol = featureWidget.getElementsByClassName(
+    "feature-widget-item-left"
+  )[0].parentNode;
 
   // Check if left item has an image
   let imageTags = leftCol.getElementsByTagName("img");

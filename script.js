@@ -1,14 +1,3 @@
-// Select all h2 elements
-const headings = document.querySelectorAll("h2");
-
-// Initialize an array to store the feature widgets and their properties
-const featureWidgets = [];
-
-// Function to hide an element
-function hideElement(element) {
-  element.style.display = "none";
-}
-
 // Function to wrap content inside a new div with the specified class name
 function wrapContentInDiv(parent, className) {
   const wrapperDiv = document.createElement("div");
@@ -52,12 +41,18 @@ function stripPrefix(className) {
   return className.split("-")[1];
 }
 
+// Select all h2 elements
+const headings = document.querySelectorAll("h2");
+
+// Initialize an array to store the feature widgets and their properties
+const featureWidgets = [];
+
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach((heading) => {
   const tokens = heading.textContent.trim().split(" ");
   if (tokens[0] === "feature-widget") {
     // Hide the h2 element
-    hideElement(heading);
+    heading.style.display = "none";
 
     // Store the parent element and parsed properties
     const properties = {

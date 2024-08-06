@@ -50,8 +50,6 @@ const featureWidgets = [];
 
 // Iterate through the headings to find those with the text "feature-widget"
 headings.forEach((heading) => {
-  console.log(heading.textContent);
-  // console.log(heading.textContent.split(":")[1].trim());
 
   if (heading.textContent.includes("feature-widget")) {
     const content = heading.textContent.split(":")[1].trim();
@@ -76,11 +74,9 @@ headings.forEach((heading) => {
 
 // Iterate over each feature widget to add classes and wrap content
 featureWidgets.forEach((featureWidget) => {
-  // console.log(featureWidget)
-  // console.log(featureWidget.parent)
-  console.log(featureWidget.parent.parentNode)
+  
   featureWidget.parent.parentNode.classList.add("feature-widget");
-  // console.log(featureWidget.parent.parentNode.parentNode)
+
   const rowElements = featureWidget.parent.querySelectorAll(".row");
   const imageLeft = featureWidget.imageLeft;
 

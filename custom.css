@@ -1,0 +1,19 @@
+
+.page-content{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    max-width: unset !important;
+    }
+.section{
+display: flex !important;
+max-width: 1240px !important;
+}
+.feature-widget{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    max-width: unset !important;
+    }

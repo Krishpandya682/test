@@ -20,8 +20,8 @@ window.onload = function () {
 
   // Set col-800-3 to float left inside col-800-9
   col8003.style.float = "left";
-  col8003.style.width = "30%"; 
-  col8003.style.paddingRight = "1rem"; 
+  col8003.style.width = "25%"; 
+  col8003.style.marginRight = "1rem"; 
   
   // Find the first div with class "section" inside col-800-9
   var firstSection = col8009.querySelector(".section");

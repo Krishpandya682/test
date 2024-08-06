@@ -76,6 +76,7 @@ headings.forEach((heading) => {
 
 // Iterate over each feature widget to add classes and wrap content
 featureWidgets.forEach((featureWidget) => {
+  featureWidget.parentNode.parentNode.classList.add("feature-widget");
   const rowElements = featureWidget.parent.querySelectorAll(".row");
   const imageLeft = featureWidget.imageLeft;
 
@@ -101,7 +102,7 @@ featureWidgets.forEach((featureWidget) => {
   });
 });
 
-/******************MOVE THE FEATURE WIDGET TO THE ROOT DIV***************************************** */
+/******************MOVE THE FEATURE WIDGET TO MAIN CONTENT***************************************** */
 // // Get all the feature widget items
 // let featureWidgetItems = document.getElementsByClassName(
 //   "feature-widget-item-left"

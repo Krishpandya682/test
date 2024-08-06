@@ -78,8 +78,8 @@ headings.forEach((heading) => {
 featureWidgets.forEach((featureWidget) => {
   console.log(featureWidget)
   console.log(featureWidget.parent)
-  console.log(featureWidget.parent.parent)
-  console.log(featureWidget.parent.parent.parent)
+  console.log(featureWidget.parent.parentNode)
+  console.log(featureWidget.parent.parentNode.parentNode)
   const rowElements = featureWidget.parent.querySelectorAll(".row");
   const imageLeft = featureWidget.imageLeft;
 

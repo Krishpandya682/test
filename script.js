@@ -43,7 +43,8 @@ function stripPrefix(className) {
 
 // Select all h2 elements
 const headings = document.querySelectorAll("h2");
-
+console.log("Headings");
+console.log(headings);
 // Initialize an array to store the feature widgets and their properties
 const featureWidgets = [];
 

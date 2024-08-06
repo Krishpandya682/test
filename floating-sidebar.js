@@ -11,8 +11,9 @@ window.onload = function() {
     col8003.style.float = 'left';
     col8003.style.width = '25%'; // Adjust if needed
 
-    // Move col-800-3 inside col-800-9
+    // Move col-800-3 to the start of col-800-9
     if (col8009 && col8003) {
-        col8009.appendChild(col8003);
+        // Insert col-800-3 at the beginning of col-800-9
+        col8009.insertBefore(col8003, col8009.firstChild);
     }
 };

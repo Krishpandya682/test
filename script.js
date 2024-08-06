@@ -76,7 +76,10 @@ headings.forEach((heading) => {
 
 // Iterate over each feature widget to add classes and wrap content
 featureWidgets.forEach((featureWidget) => {
-  featureWidget.parent.parent.parent.classList.add("feature-widget");
+  console.log(featureWidget)
+  console.log(featureWidget.parent)
+  console.log(featureWidget.parent.parent)
+  console.log(featureWidget.parent.parent.parent)
   const rowElements = featureWidget.parent.querySelectorAll(".row");
   const imageLeft = featureWidget.imageLeft;
 

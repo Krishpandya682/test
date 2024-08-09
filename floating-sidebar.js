@@ -3,6 +3,14 @@ window.onload = function () {
   var col8009 = document.querySelector(".col-800-9");
   var col8003 = document.querySelector(".col-800-3");
 
+  // Rename classes
+  if (col8009) {
+    col8009.classList.remove("col-800-9");
+  }
+
+  if (col8003) {
+    col8003.classList.remove("col-800-3");
+  }
 
   // Set col-800-9 to full width
   col8009.style.width = "100%";

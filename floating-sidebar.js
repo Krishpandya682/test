@@ -6,6 +6,7 @@ window.onload = function () {
 
   // Set col-800-9 to full width
   col8009.style.width = "100%";
+  col8009.style.maxWidth = "100%";
 
   // Set col-800-3 to float left inside col-800-9
   col8003.style.float = "left";

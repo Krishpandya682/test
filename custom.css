@@ -16,5 +16,5 @@
 }
 
 .editor-content:after {
-    clear: none !important;
+    /* clear: none !important; */
 }

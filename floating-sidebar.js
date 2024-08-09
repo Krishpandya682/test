@@ -12,4 +12,5 @@ window.onload = function () {
   col8003.style.width = "25%"; 
   col8003.style.marginRight = "1rem"; 
 
+  col8003.parentElement.classList.remove("row")
 };

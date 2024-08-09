@@ -11,17 +11,5 @@ window.onload = function () {
   col8003.style.float = "left";
   col8003.style.width = "25%"; 
   col8003.style.marginRight = "1rem"; 
-  
-  // Find the first div with class "section" inside col-800-9
-  var firstSection = col8009.querySelector(".section");
 
-  // Move col-800-3 before the first section div
-  if (col8009 && col8003) {
-    if (firstSection) {
-      col8009.insertBefore(col8003, firstSection);
-    } else {
-      // If no section div is found, append col-800-3 at the end
-      col8009.appendChild(col8003);
-    }
-  }
 };
